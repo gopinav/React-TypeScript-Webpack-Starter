@@ -23,7 +23,7 @@ module.exports = ({ env }) => {
               options: {
                 plugins: [
                   isDevelopment && require.resolve('react-refresh/babel'),
-                ],
+                ].filter(Boolean),
               },
             },
           ],
@@ -53,7 +53,7 @@ module.exports = ({ env }) => {
       }),
       isDevelopment && new webpack.HotModuleReplacementPlugin(),
       isDevelopment && new ReactRefreshWebpackPlugin(),
-    ],
+    ].filter(Boolean),
     stats: 'errors-only',
   }
 }
