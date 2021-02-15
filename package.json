@@ -1,0 +1,17 @@
+{
+  "name": "react-typescript-webpack-starter",
+  "version": "1.0.0",
+  "description": "A starter template for React with Typescript using Webpack 5",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "React",
+    "TypeScript",
+    "Webpack 5",
+    "Starter Template",
+    "Boilerplate"
+  ],
+  "author": "Vishwas",
+  "license": "ISC"
+}
