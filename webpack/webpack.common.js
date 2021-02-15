@@ -1,13 +1,16 @@
 const path = require('path')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
-module.exports = env => {
-  const isDevelopment = env.env !== 'production'
+module.exports = ({ env }) => {
+  const isDevelopment = env !== 'prod'
+
   return {
     entry: path.resolve(__dirname, '..', './src/index.tsx'),
     resolve: {
-      extensions: ['.tsx', '.ts', '.js']
+      extensions: ['.tsx', '.ts', '.js'],
     },
     module: {
       rules: [
@@ -19,36 +22,37 @@ module.exports = env => {
               loader: require.resolve('babel-loader'),
               options: {
                 plugins: [
-                  isDevelopment && require.resolve('react-refresh/babel')
-                ]
-              }
-            }
-          ]
+                  isDevelopment && require.resolve('react-refresh/babel'),
+                ],
+              },
+            },
+          ],
         },
         {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader']
+          use: ['style-loader', 'css-loader'],
         },
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
-          type: 'asset/resource'
-        }
-      ]
+          type: 'asset/resource',
+        },
+      ],
     },
     output: {
       path: path.resolve(__dirname, '..', './build'),
-      filename: 'bundle.js'
+      filename: 'bundle.js',
     },
     devServer: {
       contentBase: path.resolve(__dirname, '..', './build'),
-      hot: true
+      hot: true,
     },
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, '..', './src/index.html')
+        template: path.resolve(__dirname, '..', './src/index.html'),
       }),
-      isDevelopment && new ReactRefreshWebpackPlugin()
-    ]
+      isDevelopment && new webpack.HotModuleReplacementPlugin(),
+      isDevelopment && new ReactRefreshWebpackPlugin(),
+    ],
   }
 }
