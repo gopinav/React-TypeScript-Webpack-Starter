@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "A starter template for React with Typescript using Webpack 5",
   "scripts": {
-    "start": "webpack serve --config build-utils/webpack.config.js --env env=dev",
-    "build": "webpack --config build-utils/webpack.config.js --env env=prod",
+    "start": "webpack serve --config webpack/webpack.config.js --env env=dev",
+    "build": "webpack --config webpack/webpack.config.js --env env=prod",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,12 +24,16 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
+    "@babel/plugin-transform-runtime": "^7.12.15",
     "@babel/preset-env": "^7.12.16",
     "@babel/preset-react": "^7.12.13",
     "@babel/preset-typescript": "^7.12.16",
+    "@babel/runtime": "^7.12.13",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.15.0",
+    "@typescript-eslint/parser": "^4.15.0",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^5.0.2",
