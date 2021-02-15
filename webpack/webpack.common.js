@@ -54,5 +54,6 @@ module.exports = ({ env }) => {
       isDevelopment && new webpack.HotModuleReplacementPlugin(),
       isDevelopment && new ReactRefreshWebpackPlugin(),
     ],
+    stats: 'errors-only',
   }
 }
