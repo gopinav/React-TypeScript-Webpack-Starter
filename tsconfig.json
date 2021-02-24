@@ -7,9 +7,9 @@
       "dom.iterable",
       "esnext"
     ] /* Specify library files to be included in the compilation. */,
-    "allowJs": true /* Allow javascript files to be compiled. */,
-    // "checkJs": true /* Report errors in .js files. */,
-    "jsx": "react" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */,
+    // "allowJs": true /* Allow javascript files to be compiled. Useful when migrating JS to TS */,
+    // "checkJs": true /* Report errors in .js files. Works in tandem with allowJs. */,
+    "jsx": "react-jsx" /* Specify JSX code generation: 'preserve', 'react-native', 'react' or 'react-jsx'. */,
     "noEmit": true /* Do not emit outputs. */,
     "isolatedModules": true /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */,
     "strict": true /* Enable all strict type-checking options. */,
@@ -20,5 +20,5 @@
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
     "resolveJsonModule": true
   },
-  "include": ["./src/**/*"]
+  "include": ["src/**/*"]
 }

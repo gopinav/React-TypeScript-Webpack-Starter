@@ -1,6 +1,5 @@
-import React from 'react'
 import { Counter } from './Counter'
-const App = (): JSX.Element => {
+const App = () => {
   return (
     <>
       <h1>React TypeScript Webpack Starter Template</h1>
