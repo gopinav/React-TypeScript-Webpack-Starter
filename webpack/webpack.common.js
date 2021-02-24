@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 module.exports = ({ env }) => {
-  const isDevelopment = env !== 'prod'
+  const isDevelopment = env === 'dev'
 
   return {
     entry: path.resolve(__dirname, '..', './src/index.tsx'),
