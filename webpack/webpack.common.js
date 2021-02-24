@@ -43,7 +43,9 @@ module.exports = ({ env }) => {
       filename: 'bundle.js',
     },
     devServer: {
+      compress: true,
       hot: true,
+      historyApiFallback: true,
     },
     plugins: [
       new CleanWebpackPlugin(),
