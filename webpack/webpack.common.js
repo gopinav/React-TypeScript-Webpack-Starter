@@ -43,7 +43,6 @@ module.exports = ({ env }) => {
       filename: 'bundle.js',
     },
     devServer: {
-      contentBase: path.resolve(__dirname, '..', './build'),
       hot: true,
     },
     plugins: [
