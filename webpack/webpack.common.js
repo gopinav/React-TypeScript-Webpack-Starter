@@ -33,8 +33,12 @@ module.exports = ({ env }) => {
           use: ['style-loader', 'css-loader'],
         },
         {
-          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          test: /\.(png|jpg|jpeg|gif)$/i,
           type: 'asset/resource',
+        },
+        {
+          test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+          type: 'asset/inline',
         },
       ],
     },
