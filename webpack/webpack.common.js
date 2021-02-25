@@ -47,6 +47,7 @@ module.exports = ({ env }) => {
       filename: 'bundle.js',
     },
     devServer: {
+      open: true,
       compress: true,
       hot: true,
       historyApiFallback: true,
