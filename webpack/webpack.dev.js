@@ -1,4 +1,4 @@
 module.exports = {
   mode: 'development',
-  devtool: 'inline-source-map',
+  devtool: 'cheap-module-source-map',
 }
