@@ -2,7 +2,7 @@
 
 npx degit https://github.com/gopinav/React-TypeScript-Webpack-Starter my-app
 
-## Install depedencies
+## Install dependencies
 
 cd my-app
 yarn
