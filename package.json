@@ -6,7 +6,6 @@
     "start": "webpack serve --config webpack/webpack.config.js --env env=dev",
     "build": "webpack --config webpack/webpack.config.js --env env=prod",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
-    "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -48,7 +47,6 @@
     "html-webpack-plugin": "^5.1.0",
     "husky": "4",
     "lint-staged": "^10.5.4",
-    "prettier": "^2.2.1",
     "react-refresh": "^0.9.0",
     "style-loader": "^2.0.0",
     "typescript": "^4.1.5",
@@ -65,9 +63,6 @@
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json}": [
       "eslint --fix"
-    ],
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write"
     ]
   }
 }

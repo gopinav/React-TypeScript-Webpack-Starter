@@ -1,0 +1,37 @@
+{
+	"folders": [{
+		"path": "."
+	}],
+	"settings": {
+		"editor.snippetSuggestions": "inline",
+		"files.exclude": {
+			".github": true,
+			"**/.git": true,
+			".gitignore": true,
+			"package.json": false,
+			".eslintrc.json": true,
+			".vscode": true,
+			"**/node_modules": true,
+			".env": true,
+			"LICENSE": true,
+			".firebaserc": true,
+			"firebase.json": true
+		},
+		"eslint.format.enable": true,
+		"eslint.codeActionsOnSave.mode": "problems",
+		"editor.formatOnSave": true,
+		"[javascript]": {
+			"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+		}
+	},
+	"extensions": {
+		"recommendations": [
+			"anseki.vscode-color",
+			"christian-kohler.npm-intellisense",
+			"codezombiech.gitignore",
+			"dbaeumer.vscode-eslint",
+			"ecmel.vscode-html-css",
+			"streetsidesoftware.code-spell-checker"
+		]
+	}
+}
