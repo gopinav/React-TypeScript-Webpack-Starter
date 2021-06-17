@@ -4,7 +4,7 @@
 	}],
 	"settings": {
 		"editor.snippetSuggestions": "inline",
-		"files.exclude": {
+		"files.excludee": {
 			".github": true,
 			"**/.git": true,
 			".gitignore": true,
@@ -15,14 +15,20 @@
 			".env": true,
 			"LICENSE": true,
 			".firebaserc": true,
-			"firebase.json": true
+			"firebase.json": true,
+			".eslintrc.js": true,
+			".babelrc": true,
+			"yarn.lock": true,
+			"build": true,
+			"webpack": true
 		},
-		"eslint.validate": ["typescript", "javascript", "json", "javascriptreact", "typescriptreact"],
+		"eslint.validate": ["typescript", "javascript", "javascriptreact", "typescriptreact"],
 		"editor.codeActionsOnSave": {
 			"source.fixAll.eslint": true
 		},
 		"cSpell.words": [
 			"Cacheable",
+			"Vishwas",
 			"allman",
 			"anseki",
 			"dbaeumer",

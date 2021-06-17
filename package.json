@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "A starter template for React with Typescript using Webpack 5",
   "theme-color": "#000000",
+  "background-color": "#ffffff",
   "scripts": {
     "start": "webpack serve --config webpack/webpack.config.js --env env=dev",
-    "build": "webpack --config webpack/webpack.config.js --env env=prod --trace-deprecation",
+    "build": "webpack --config webpack/webpack.config.js --env env=prod",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,7 +22,6 @@
   "dependencies": {
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "workbox": "^0.0.0",
     "workbox-background-sync": "^6.1.5",
     "workbox-cacheable-response": "^6.1.5",
     "workbox-core": "^6.1.5",
@@ -52,10 +52,8 @@
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.1.0",
     "husky": "4",
     "lint-staged": "^10.5.4",

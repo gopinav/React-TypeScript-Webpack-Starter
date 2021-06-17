@@ -75,8 +75,9 @@ setDefaultHandler(new StaleWhileRevalidate({}));
 // generate a response.
 setCatchHandler(async (options) => 
 {
+    console.log(options);
     const fallbacks: { [key: string]: string; } = {
-        document: "/no-network.html",
+        document: "/404.html",
         image: noNetworkImage,
         font: defaultFont,
     };

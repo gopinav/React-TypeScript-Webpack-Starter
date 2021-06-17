@@ -6,6 +6,7 @@ export const App = () =>
         <>
             <h1>React TypeScript Webpack Starter Template</h1>
             <Counter />
+            <img src="a.png" alt=""/>
         </>
     );
 };
