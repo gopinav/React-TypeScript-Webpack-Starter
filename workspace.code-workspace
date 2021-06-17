@@ -4,7 +4,7 @@
 	}],
 	"settings": {
 		"editor.snippetSuggestions": "inline",
-		"files.excludee": {
+		"files.exclude": {
 			".github": true,
 			"**/.git": true,
 			".gitignore": true,
@@ -17,18 +17,34 @@
 			".firebaserc": true,
 			"firebase.json": true
 		},
-		"eslint.format.enable": true,
-		"eslint.codeActionsOnSave.mode": "problems",
-		"editor.formatOnSave": true,
-		"[javascript]": {
-			"editor.defaultFormatter": "dbaeumer.vscode-eslint"
-		}
+		"eslint.validate": ["typescript", "javascript", "json", "javascriptreact", "typescriptreact"],
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true
+		},
+		"cSpell.words": [
+			"Cacheable",
+			"allman",
+			"anseki",
+			"dbaeumer",
+			"ecmel",
+			"eqeqeq",
+			"firebaserc",
+			"kohler",
+			"linebreak",
+			"pmmmwh",
+			"precache",
+			"precaching",
+			"webfonts"
+		],
+		"files.autoSave": "afterDelay",
+		"editor.formatOnSaveMode": "modifications",
+		"diffEditor.codeLens": true,
+		"editor.minimap.enabled": false
 	},
 	"extensions": {
 		"recommendations": [
 			"anseki.vscode-color",
 			"christian-kohler.npm-intellisense",
-			"codezombiech.gitignore",
 			"dbaeumer.vscode-eslint",
 			"ecmel.vscode-html-css",
 			"streetsidesoftware.code-spell-checker"

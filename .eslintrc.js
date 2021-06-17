@@ -32,20 +32,21 @@ module.exports = {
             "error",
             "unix"
         ],
-		"quotes": [
+        "quotes": [
             "error",
             "double"
         ],
-		"semi": [
+        "semi": [
             "error",
             "always"
-		],
-		"curly": ["warn", "multi"],
-		"comma-spacing": "warn",
-		"eol-last": "warn",
-		"eqeqeq": "error",
-		"no-bitwise": "error",
+        ],
+        "curly": ["warn", "multi"],
+        "comma-spacing": "warn",
+        "eol-last": "warn",
+        "eqeqeq": "error",
+        "no-bitwise": "error",
         "prefer-const": "error",
-		"brace-style": ["error", "allman"]        
+        "brace-style": ["error", "allman"],
+        "indent": ["error", 4]
     },
 };

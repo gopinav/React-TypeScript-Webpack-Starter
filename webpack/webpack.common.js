@@ -3,6 +3,11 @@ const package = require("../package.json");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WebpackPwaManifest = require("webpack-pwa-manifest");
+const CopyPlugin = require("copy-webpack-plugin");
+const {InjectManifest} = require("workbox-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+
+const buildFolder = path.resolve(__dirname, "..", "./build");
 
 module.exports = {
   entry: path.resolve(__dirname, "..", "./src/react/index.tsx"),
@@ -17,6 +22,7 @@ module.exports = {
         use: [
           {
             loader: "babel-loader",
+            include: path.resolve(__dirname, "..", "./src")
           },
         ],
       },
@@ -35,7 +41,7 @@ module.exports = {
     ],
   },
   output: {
-    path: path.resolve(__dirname, "..", "./build"),
+    path: buildFolder,
     filename: "bundle.js",
   },
   plugins: [
@@ -62,17 +68,24 @@ module.exports = {
       icons: [
         {
           src: path.resolve(__dirname, "..", "src/assets/icons/logo512.png"),
-          sizes: [96, 128, 192, 256, 384, 512],
-          ios: true
+          sizes: [96, 128, 192, 256, 384, 512]
         },
         {
           src: path.resolve(__dirname, "..", "src/assets/icons/maskable512.png"),
           sizes: [96, 128, 192, 256, 384, 512],
-          purpose: "maskable",
-          ios: true
+          purpose: "maskable"
         }
       ]
-    })
-  ],
-  stats: "errors-only",
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: path.resolve(__dirname, "..", "src/assets/fallbacks/404.html"), to: buildFolder },
+        { from: path.resolve(__dirname, "..", "src/robots.txt"), to: buildFolder },
+      ],
+    }),
+    new InjectManifest({
+      swSrc: path.resolve(__dirname, "..", "src/sw.ts")
+    }),
+    new CleanWebpackPlugin()
+  ]
 };
