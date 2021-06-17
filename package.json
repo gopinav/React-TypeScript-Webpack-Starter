@@ -2,6 +2,7 @@
   "name": "react-typescript-webpack-starter",
   "version": "1.0.0",
   "description": "A starter template for React with Typescript using Webpack 5",
+  "theme-color": "#000000",
   "scripts": {
     "start": "webpack serve --config webpack/webpack.config.js --env env=dev",
     "build": "webpack --config webpack/webpack.config.js --env env=prod",
@@ -53,7 +54,8 @@
     "webpack": "^5.21.2",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2",
-    "webpack-merge": "^5.7.3"
+    "webpack-merge": "^5.7.3",
+    "webpack-pwa-manifest": "^4.3.0"
   },
   "husky": {
     "hooks": {
