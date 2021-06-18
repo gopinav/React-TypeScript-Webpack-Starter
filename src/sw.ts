@@ -4,15 +4,15 @@ import {setDefaultHandler, setCatchHandler, registerRoute} from "workbox-routing
 import {CacheableResponsePlugin} from "workbox-cacheable-response";
 import {BackgroundSyncPlugin} from "workbox-background-sync";
 import {ExpirationPlugin} from "workbox-expiration";
-import {setCacheNameDetails, clientsClaim} from "workbox-core";
+import {setCacheNameDetails} from "workbox-core";
 
 import defaultFont from "./assets/fallbacks/default-font.ttf";
 import noNetworkImage from "./assets/fallbacks/no-network.png";
 
-declare const self: ServiceWorkerGlobalScope;
-
 setCacheNameDetails({prefix: "__APP_NAME__", suffix: "__APP_VERSION__"});
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 precacheAndRoute(self.__WB_MANIFEST || []);
 cleanupOutdatedCaches();
 
@@ -75,9 +75,8 @@ setDefaultHandler(new StaleWhileRevalidate({}));
 // generate a response.
 setCatchHandler(async (options) => 
 {
-    console.log("Falling back");
     const fallbacks: { [key: string]: string; } = {
-        document: "/404.html",
+        document: "/offline.html",
         image: noNetworkImage,
         font: defaultFont,
     };
@@ -88,9 +87,11 @@ setCatchHandler(async (options) =>
     Response.error();
 });
 
-// Take over control ASAP if running locally.
-if(location.hostname === "localhost")
+addEventListener("message", (event) => 
 {
-    self.skipWaiting();
-    clientsClaim();
-}
+    if (event.data && event.data.type === "SKIP_WAITING") 
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        self.skipWaiting();
+    
+});

@@ -58,9 +58,10 @@ module.exports = {
             }
         }),
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, "..", "src/assets/fallbacks/404.html"),
-            filename: "404.html",
-            title: "Error"
+            template: path.resolve(__dirname, "..", "src/assets/fallbacks/offline.html"),
+            filename: "offline.html",
+            title: "Offline",
+            inject: false
         }),
         new WebpackPwaManifest({
             name: package.name,
