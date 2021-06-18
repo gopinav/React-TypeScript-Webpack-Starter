@@ -89,7 +89,7 @@ setCatchHandler(async (options) =>
 
 addEventListener("message", (event) => 
 {
-    if (event.data && event.data.type === "SKIP_WAITING") 
+    if (event.data?.type === "SKIP_WAITING") 
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         self.skipWaiting();

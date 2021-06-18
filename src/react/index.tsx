@@ -8,5 +8,4 @@ ReactDOM.render(<App wb={wb} />, document.getElementById("root"));
 
 if ("serviceWorker" in navigator) 
     wb.register();
-
-wb.addEventListener("controlling", window.location.reload);
+    

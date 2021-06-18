@@ -20,7 +20,8 @@
 			".babelrc": true,
 			"yarn.lock": true,
 			"build": true,
-			"webpack": true
+			"webpack": true,
+			"yarn-error.log": true
 		},
 		"eslint.validate": ["typescript", "javascript", "javascriptreact", "typescriptreact"],
 		"editor.codeActionsOnSave": {

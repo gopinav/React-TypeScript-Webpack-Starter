@@ -15,7 +15,7 @@ export const HandleAppState = ({wb}: { wb: Workbox; }) =>
     };
      
     const [workerWaiting, setWorkerWaiting] = useState(false);
-    const [toggleOnline, setToggleOnline] = useState({online: true, change: false});
+    const [toggleOnline, setToggleOnline] = useState({online: navigator.onLine, change: !navigator.onLine});
 
     wb.addEventListener("waiting", () => setWorkerWaiting(true));
 
@@ -34,6 +34,7 @@ export const HandleAppState = ({wb}: { wb: Workbox; }) =>
 
     function updateWorker() 
     {
+        wb.addEventListener("controlling", () => window.location.reload());
         setWorkerWaiting(false);
         wb.messageSkipWaiting();
     }
@@ -42,7 +43,7 @@ export const HandleAppState = ({wb}: { wb: Workbox; }) =>
         <>
             <Snackbar
                 open={workerWaiting}
-                autoHideDuration={6000}
+                autoHideDuration={60000}
                 message={strings.UPDATE}
                 anchorOrigin={{ vertical: "top", horizontal: "center" }}
                 action={
@@ -56,8 +57,13 @@ export const HandleAppState = ({wb}: { wb: Workbox; }) =>
                         </IconButton>
                     </Fragment>
                 }
+                onClose={() => setWorkerWaiting(false)}
             />
-            <Snackbar open={toggleOnline.change} anchorOrigin={{ vertical: "top", horizontal: "center" }}>
+            <Snackbar open={toggleOnline.change} 
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                autoHideDuration={10000}
+                onClose={() => setToggleOnline({online: navigator.onLine, change: false})}
+            >
                 <Alert severity={toggleOnline.online ? "success": "error"} >
                     {toggleOnline.online ? strings.ONLINE : strings.OFFLINE}
                 </Alert>
