@@ -8,4 +8,10 @@ const wb = new Workbox("sw.js");
 
 if ("serviceWorker" in navigator) 
     wb.register();
-  
+
+// wb.addEventListener("waiting", showSkipWaitingPrompt);
+// wb.addEventListener("controlling", (event) => 
+// { // Took controls over
+//     window.location.reload();
+// });
+

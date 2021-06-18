@@ -84,11 +84,12 @@ module.exports = {
         }),
         new CopyPlugin({
             patterns: [
-                { from: path.resolve(__dirname, "..", "src/robots.txt"), to: buildFolder },
+                path.resolve(__dirname, "..", "src/robots.txt"),
             ],
         }),
         new InjectManifest({
             swSrc: path.resolve(__dirname, "..", "src/sw.ts")
         })
-    ]
+    ],
+    stats: "errors-only"
 };

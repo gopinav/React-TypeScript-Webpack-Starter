@@ -9,6 +9,5 @@ module.exports = {
             "process.env.name": JSON.stringify("Production"),
         }),
         new CleanWebpackPlugin()
-    ],
-    stats: "summary"
+    ]
 };

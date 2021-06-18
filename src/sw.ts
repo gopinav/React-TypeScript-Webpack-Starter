@@ -4,15 +4,15 @@ import {setDefaultHandler, setCatchHandler, registerRoute} from "workbox-routing
 import {CacheableResponsePlugin} from "workbox-cacheable-response";
 import {BackgroundSyncPlugin} from "workbox-background-sync";
 import {ExpirationPlugin} from "workbox-expiration";
-import {setCacheNameDetails, skipWaiting, clientsClaim} from "workbox-core";
+import {setCacheNameDetails, clientsClaim} from "workbox-core";
 
 import defaultFont from "./assets/fallbacks/default-font.ttf";
 import noNetworkImage from "./assets/fallbacks/no-network.png";
 
+declare const self: ServiceWorkerGlobalScope;
+
 setCacheNameDetails({prefix: "__APP_NAME__", suffix: "__APP_VERSION__"});
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore: __WB_MANIFEST is a placeholder filled by workbox-webpack-plugin with the list of dependencies to be cached
 precacheAndRoute(self.__WB_MANIFEST || []);
 cleanupOutdatedCaches();
 
@@ -75,7 +75,7 @@ setDefaultHandler(new StaleWhileRevalidate({}));
 // generate a response.
 setCatchHandler(async (options) => 
 {
-    console.log(options);
+    console.log("Falling back");
     const fallbacks: { [key: string]: string; } = {
         document: "/404.html",
         image: noNetworkImage,
@@ -91,6 +91,6 @@ setCatchHandler(async (options) =>
 // Take over control ASAP if running locally.
 if(location.hostname === "localhost")
 {
-    skipWaiting();
+    self.skipWaiting();
     clientsClaim();
 }
