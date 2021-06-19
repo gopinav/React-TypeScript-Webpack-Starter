@@ -1,6 +1,7 @@
 {
   "functions": {
-    "predeploy": "yarn --prefix \"$RESOURCE_DIR\" run build"
+    "predeploy": "yarn --prefix \"$RESOURCE_DIR\" run build",
+    "source": "functions"
   },
   "hosting": {
     "public": "build",
@@ -38,5 +39,9 @@
     "ui": {
       "enabled": true
     }
+  },
+  "firestore": {
+    "rules": "firebase/firestore.rules",
+    "indexes": "firebase/firestore.index.json"
   }
 }
