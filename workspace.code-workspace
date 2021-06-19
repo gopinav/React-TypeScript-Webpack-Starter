@@ -36,13 +36,15 @@
 			"ecmel",
 			"eqeqeq",
 			"firebaserc",
+			"giphy",
 			"kohler",
 			"linebreak",
 			"pmmmwh",
 			"precache",
 			"precaching",
 			"serviceworker",
-			"webfonts"
+			"webfonts",
+			"webp"
 		],
 		"files.autoSave": "afterDelay",
 		"editor.formatOnSaveMode": "modifications",

@@ -8,7 +8,7 @@ const {InjectManifest} = require("workbox-webpack-plugin");
 
 const buildFolder = path.resolve(__dirname, "..", "./build");
 
-module.exports = {
+module.exports = (env) => ({
     entry: path.resolve(__dirname, "..", "./src/react/index.tsx"),
     resolve: {
         extensions: [".tsx", ".ts", ".js"],
@@ -28,11 +28,26 @@ module.exports = {
                 ],
             },
             {
+                test: /\.(jpe?g|png|webp)$/i,
+                use: [
+                    {
+                        loader: "responsive-loader",
+                        options: {
+                            adapter: require("responsive-loader/sharp"),
+                            sizes: [320, 640, 960, 1200, 1800, 2400],
+                            placeholder: true,
+                            placeholderSize: 20,
+                            disabled: env === "dev"
+                        },
+                    },
+                ],
+            },
+            {
                 test: /\.css$/,
                 use: ["style-loader", "css-loader"],
             },
             {
-                test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+                test: /\.(?:ico|gif)$/i,
                 type: "asset/resource",
             },
             {
@@ -89,8 +104,9 @@ module.exports = {
             ],
         }),
         new InjectManifest({
-            swSrc: path.resolve(__dirname, "..", "src/sw.ts")
+            swSrc: path.resolve(__dirname, "..", "src/sw.ts"),
+            exclude: [ /\.map$/, /^manifest.*\.js(?:on)?$/, /\.(jpe?g|png|webp)$/i ]
         })
     ],
     stats: "errors-only"
-};
+});

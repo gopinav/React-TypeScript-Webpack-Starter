@@ -63,6 +63,8 @@
     "husky": "4",
     "lint-staged": "^10.5.4",
     "react-refresh": "^0.9.0",
+    "responsive-loader": "^2.3.0",
+    "sharp": "^0.28.3",
     "style-loader": "^2.0.0",
     "typescript": "^4.1.5",
     "webpack": "^5.21.2",
