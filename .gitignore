@@ -1,8 +1,12 @@
 #Generated
 build/
-node_modules
+**/node_modules
 
 #Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Compiled JavaScript files
+functions/lib/**/*.js
+functions/lib/**/*.js.map
