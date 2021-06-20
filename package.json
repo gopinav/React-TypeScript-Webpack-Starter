@@ -10,7 +10,7 @@
     "lint": "yarn lint:web && yarn lint:functions",
     "lint:web": "eslint --fix \"web/**/*.{js,jsx,ts,tsx,json}\"",
     "lint:functions": "eslint --fix \"functions/src/**/*.{js,ts,json}\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [
     "React",
@@ -44,6 +44,7 @@
     "@babel/preset-typescript": "^7.12.16",
     "@babel/runtime": "^7.13.10",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
+    "@types/jest": "^26.0.23",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
@@ -52,6 +53,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^9.0.0",
     "css-loader": "^5.0.2",
+    "enzyme": "^3.11.0",
     "eslint": "^7.19.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.22.1",
@@ -60,6 +62,8 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "html-webpack-plugin": "^5.1.0",
     "husky": "4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.0.4",
     "lint-staged": "^10.5.4",
     "react-refresh": "^0.9.0",
     "responsive-loader": "^2.3.0",
@@ -73,17 +77,25 @@
     "webpack-pwa-manifest": "^4.3.0",
     "workbox-webpack-plugin": "^6.1.5"
   },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "identity-obj-proxy",
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "extensionsToTreatAsEsm": [".ts"]
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn lint"
     }
   },
   "lint-staged": {
-    "web/**/*.{js,jsx,ts,tsx,json}": [
-      "eslint --fix"
+    "web/**/*.{js,jsx,ts,tsx}": [
+      "jest --findRelatedTests"
     ],
-    "functions/src/**/*.{js,ts,json}": [
-      "eslint --fix"
+    "functions/src/**/*.{js,ts}": [
+      "jest --findRelatedTests"
     ]
   }
 }
