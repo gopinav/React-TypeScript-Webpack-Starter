@@ -9,7 +9,7 @@ const {InjectManifest} = require("workbox-webpack-plugin");
 const buildFolder = path.resolve(__dirname, "..", "./build");
 
 module.exports = (env) => ({
-    entry: path.resolve(__dirname, "..", "./src/react/index.tsx"),
+    entry: path.resolve(__dirname, "..", "./web/react/index.tsx"),
     resolve: {
         extensions: [".tsx", ".ts", ".js"],
     },
@@ -22,7 +22,7 @@ module.exports = (env) => ({
                     {
                         loader: "babel-loader",
                         options: {
-                            include: path.resolve(__dirname, "..", "./src")
+                            include: path.resolve(__dirname, "..", "./web")
                         }
                     },
                 ],
@@ -62,9 +62,9 @@ module.exports = (env) => ({
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, "..", "./src/index.html"),
+            template: path.resolve(__dirname, "..", "./web/index.html"),
             title: package.name,
-            favicon: path.resolve(__dirname, "..", "./src/assets/icons/favicon.ico"),
+            favicon: path.resolve(__dirname, "..", "./web/assets/icons/favicon.ico"),
             meta: {
                 author: package.author,
                 description: package.description,
@@ -73,7 +73,7 @@ module.exports = (env) => ({
             }
         }),
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, "..", "src/assets/fallbacks/offline.html"),
+            template: path.resolve(__dirname, "..", "web/assets/fallbacks/offline.html"),
             filename: "offline.html",
             title: "Offline",
             inject: false
@@ -88,11 +88,11 @@ module.exports = (env) => ({
             publicPath: "/",
             icons: [
                 {
-                    src: path.resolve(__dirname, "..", "src/assets/icons/logo512.png"),
+                    src: path.resolve(__dirname, "..", "web/assets/icons/logo512.png"),
                     sizes: [96, 128, 192, 256, 384, 512]
                 },
                 {
-                    src: path.resolve(__dirname, "..", "src/assets/icons/maskable512.png"),
+                    src: path.resolve(__dirname, "..", "web/assets/icons/maskable512.png"),
                     sizes: [96, 128, 192, 256, 384, 512],
                     purpose: "maskable"
                 }
@@ -100,11 +100,11 @@ module.exports = (env) => ({
         }),
         new CopyPlugin({
             patterns: [
-                path.resolve(__dirname, "..", "src/robots.txt"),
+                path.resolve(__dirname, "..", "web/robots.txt"),
             ],
         }),
         new InjectManifest({
-            swSrc: path.resolve(__dirname, "..", "src/sw.ts"),
+            swSrc: path.resolve(__dirname, "..", "web/sw.ts"),
             exclude: [ /\.map$/, /^manifest.*\.js(?:on)?$/, /\.(jpe?g|png|webp)$/i ]
         })
     ],

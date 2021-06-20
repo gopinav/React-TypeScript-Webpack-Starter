@@ -7,7 +7,9 @@
   "scripts": {
     "start": "webpack serve --config webpack/webpack.config.js --env env=dev",
     "build": "webpack --config webpack/webpack.config.js --env env=prod",
-    "lint": "eslint --fix \"**/src/**/*.{js,jsx,ts,tsx,json}\"",
+    "lint": "yarn lint:web && yarn lint:functions",
+    "lint:web": "eslint --fix \"web/**/*.{js,jsx,ts,tsx,json}\"",
+    "lint:functions": "eslint --fix \"functions/src/**/*.{js,ts,json}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -77,7 +79,10 @@
     }
   },
   "lint-staged": {
-    "**/src/**/*.{js,jsx,ts,tsx,json}": [
+    "web/**/*.{js,jsx,ts,tsx,json}": [
+      "eslint --fix"
+    ],
+    "functions/src/**/*.{js,ts,json}": [
       "eslint --fix"
     ]
   }
