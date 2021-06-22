@@ -21,7 +21,11 @@
 			"yarn.lock": true,
 			"build": true,
 			"webpack": true,
-			"yarn-error.log": true
+			"yarn-error.log": true,
+			"tsconfig.json": true,
+			"setupTests.js": true,
+			"__tests__/__snapshots__":true,
+			"functions/yarn.lock":true
 		},
 		"eslint.validate": ["typescript", "javascript", "javascriptreact", "typescriptreact"],
 		"editor.codeActionsOnSave": {
@@ -44,7 +48,8 @@
 			"precaching",
 			"serviceworker",
 			"webfonts",
-			"webp"
+			"webp",
+			"wojtekmaj"
 		],
 		"editor.formatOnSaveMode": "modifications",
 		"diffEditor.codeLens": true,
