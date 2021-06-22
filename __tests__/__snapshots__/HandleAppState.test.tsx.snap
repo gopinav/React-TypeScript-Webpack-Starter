@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HandleAppState Component Should handle connectivity states Should show snackbar when loading in offline mode. 1`] = `
+<Fragment>
+  <WithStyles(ForwardRef(Snackbar))
+    action={
+      <React.Fragment>
+        <WithStyles(ForwardRef(Button))
+          color="secondary"
+          onClick={[Function]}
+          size="small"
+        >
+          UPDATE
+        </WithStyles(ForwardRef(Button))>
+        <WithStyles(ForwardRef(IconButton))
+          aria-label="close"
+          onClick={[Function]}
+          size="small"
+        >
+          <Memo
+            fontSize="small"
+          />
+        </WithStyles(ForwardRef(IconButton))>
+      </React.Fragment>
+    }
+    anchorOrigin={
+      Object {
+        "horizontal": "center",
+        "vertical": "top",
+      }
+    }
+    autoHideDuration={60000}
+    message="New Update Available 🎉"
+    onClose={[Function]}
+    open={false}
+  />
+  <WithStyles(ForwardRef(Snackbar))
+    anchorOrigin={
+      Object {
+        "horizontal": "center",
+        "vertical": "top",
+      }
+    }
+    autoHideDuration={10000}
+    onClose={[Function]}
+    open={true}
+  >
+    <Alert
+      severity="error"
+    >
+      Internet connection lost.
+    </Alert>
+  </WithStyles(ForwardRef(Snackbar))>
+</Fragment>
+`;
+
+exports[`HandleAppState Component should render correctly by default 1`] = `
+<Fragment>
+  <WithStyles(ForwardRef(Snackbar))
+    action={
+      <React.Fragment>
+        <WithStyles(ForwardRef(Button))
+          color="secondary"
+          onClick={[Function]}
+          size="small"
+        >
+          UPDATE
+        </WithStyles(ForwardRef(Button))>
+        <WithStyles(ForwardRef(IconButton))
+          aria-label="close"
+          onClick={[Function]}
+          size="small"
+        >
+          <Memo
+            fontSize="small"
+          />
+        </WithStyles(ForwardRef(IconButton))>
+      </React.Fragment>
+    }
+    anchorOrigin={
+      Object {
+        "horizontal": "center",
+        "vertical": "top",
+      }
+    }
+    autoHideDuration={60000}
+    message="New Update Available 🎉"
+    onClose={[Function]}
+    open={false}
+  />
+  <WithStyles(ForwardRef(Snackbar))
+    anchorOrigin={
+      Object {
+        "horizontal": "center",
+        "vertical": "top",
+      }
+    }
+    autoHideDuration={10000}
+    onClose={[Function]}
+    open={false}
+  >
+    <Alert
+      severity="success"
+    >
+      Back on line.
+    </Alert>
+  </WithStyles(ForwardRef(Snackbar))>
+</Fragment>
+`;

@@ -10,7 +10,8 @@
     "lint": "yarn lint:web && yarn lint:functions",
     "lint:web": "eslint --fix \"web/**/*.{js,jsx,ts,tsx,json}\"",
     "lint:functions": "eslint --fix \"functions/src/**/*.{js,ts,json}\"",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "keywords": [
     "React",
@@ -44,16 +45,19 @@
     "@babel/preset-typescript": "^7.12.16",
     "@babel/runtime": "^7.13.10",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
+    "@types/enzyme": "^3.10.8",
     "@types/jest": "^26.0.23",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.15.0",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.2",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^9.0.0",
     "css-loader": "^5.0.2",
     "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.2",
     "eslint": "^7.19.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.22.1",
@@ -78,11 +82,22 @@
     "workbox-webpack-plugin": "^6.1.5"
   },
   "jest": {
+    "testMatch": [
+      "<rootDir>/__tests__/**/*.[jt]s?(x)"
+    ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "identity-obj-proxy",
       "\\.(css|less)$": "identity-obj-proxy"
     },
-    "extensionsToTreatAsEsm": [".ts"]
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "<rootDir>/setupTests.js"
+    ]
   },
   "husky": {
     "hooks": {

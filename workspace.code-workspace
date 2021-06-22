@@ -20,7 +20,7 @@
 			".babelrc": true,
 			"yarn.lock": true,
 			"build": true,
-			"webpack": truee,
+			"webpack": true,
 			"yarn-error.log": true
 		},
 		"eslint.validate": ["typescript", "javascript", "javascriptreact", "typescriptreact"],
@@ -46,7 +46,6 @@
 			"webfonts",
 			"webp"
 		],
-		"files.autoSave": "afterDelay",
 		"editor.formatOnSaveMode": "modifications",
 		"diffEditor.codeLens": true,
 		"editor.minimap.enabled": false
