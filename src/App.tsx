@@ -1,19 +1,20 @@
 import React, { useEffect } from 'react'
 import { Counter } from './Counter'
-import { useDispatch } from 'react-redux'
-import { getInfoRequest } from '../src/redux/payment/state/getInfo/getInfoSlice'
-import { selectInfoList } from '../src/redux/payment/state/getInfo/getInfoSelectors'
+import { useDispatch, useSelector } from 'react-redux'
+import { getInfoRequest } from '@src/redux/payment/state/getInfo/getInfoSlice'
+import { selectInfoList } from '@src/redux/payment/state/getInfo/getInfoSelectors'
 
 export const App = () => {
   const dispatch = useDispatch()
+  const infoList = useSelector(selectInfoList)
 
   useEffect(function dispatchDate() {
     dispatch(getInfoRequest({orgId: 32434}))
   }, [dispatch])
 
-  useEffect(function dispatchDate() {
-    if (selectInfoList) {
-      console.log('selectInfoList', selectInfoList)
+  useEffect(function showDate() {
+    if (infoList) {
+      console.log('infoList', infoList)
     }
   }, [dispatch])
 
