@@ -1,9 +1,9 @@
+export type TInfoListReq = { orgId: number }
+
 type TInfoItem = {
   id: string,
   title: string,
 }
-
-export type TInfoListReq = { orgId: number }
 
 export type TInfoListRes = {
   errorCode: number,

@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit'
-import { TRootState } from '../../../rootReducer'
-import { TInfoListState } from '../../state/getInfo/getInfoTypes'
+import { TInfoListState } from '@src/redux/payment/state/getInfo/getInfoTypes'
+import { TRootState } from '@src/redux/rootReducer'
 
 const getInfoState = (state: TRootState): TInfoListState => state.payment.state.getInfo
 
