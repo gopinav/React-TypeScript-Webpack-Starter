@@ -1,26 +1,66 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Counter } from './Counter'
-import { useDispatch, useSelector } from 'react-redux'
-import { getInfoRequest } from '@src/redux/payment/state/getInfo/getInfoSlice'
-import { selectInfoList } from '@src/redux/payment/state/getInfo/getInfoSelectors'
+import {
+  useCreatingResourceMutation,
+  useDeleteResourceMutation,
+  useGetPostsByIdQuery,
+  useGetPostsQuery,
+} from '@src/redux/usersApi'
 
 export const App = () => {
-  const dispatch = useDispatch()
-  const infoList = useSelector(selectInfoList)
+  const {
+    data: posts = [],
+    error: errorPosts,
+    isLoading: isLoadingPosts,
+  } = useGetPostsQuery('')
+  console.log(posts, errorPosts, isLoadingPosts)
 
-  useEffect(function dispatchDate() {
-    dispatch(getInfoRequest({orgId: 32434}))
-  }, [dispatch])
+  const {
+    data: postsById = {},
+    error: errorPostsById,
+    isLoading: isLoadingPostsById,
+  } = useGetPostsByIdQuery('1')
 
-  useEffect(function showDate() {
-    if (infoList) {
-      console.log('infoList', infoList)
-    }
-  }, [dispatch])
+  if (errorPostsById) {
+    console.log(errorPostsById)
+  }
+
+  const [addUser, { isLoading, isError }] = useCreatingResourceMutation()
+  const [
+    deleteUser,
+    { isLoading: deleteUserisLoading, isError: errorDeleteUser },
+  ] = useDeleteResourceMutation()
+
+  const handleAddUser = async () => {
+    await addUser({
+      userId: 1,
+      title: 'foo',
+      body: 'bar',
+      //эта штука нужна, если мы хотим использовать доп состояния запроса, иначе их не вызовешь (isLoading, isError)
+    }).unwrap()
+  }
+
+  const handleDeleteUser = async (id: number) => {
+    await deleteUser(id).unwrap()
+  }
 
   return (
     <>
-      <h1>React TypeScript Webpack Starter Template</h1>
+      {isLoadingPosts ? (
+        <>LOADING</>
+      ) : (
+        <ul>
+          {posts.map((post) => (
+            <li key={post.id} onClick={() => handleDeleteUser(post.id)}>
+              {post.id}
+              {post.title}
+            </li>
+          ))}
+        </ul>
+      )}
+      <button type="button" onClick={(): Promise<void> => handleAddUser()}>
+        Add users
+      </button>
       <Counter />
     </>
   )
