@@ -1,0 +1,67 @@
+{
+	"folders": [{
+		"path": "."
+	}],
+	"settings": {
+		"editor.snippetSuggestions": "inline",
+		"files.exclude": {
+			".github": true,
+			"**/.git": true,
+			".gitignore": true,
+			"package.json": false,
+			".eslintrc.json": true,
+			".vscode": true,
+			"**/node_modules": true,
+			".env": true,
+			"LICENSE": true,
+			".firebaserc": true,
+			"firebase.json": true,
+			".eslintrc.js": true,
+			".babelrc": true,
+			"yarn.lock": true,
+			"build": true,
+			"webpack": true,
+			"yarn-error.log": true,
+			"tsconfig.json": true,
+			"setupTests.js": true,
+			"__tests__/__snapshots__":true,
+			"functions/yarn.lock":true
+		},
+		"eslint.validate": ["typescript", "javascript", "javascriptreact", "typescriptreact"],
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true
+		},
+		"cSpell.words": [
+			"Cacheable",
+			"Vishwas",
+			"allman",
+			"anseki",
+			"dbaeumer",
+			"ecmel",
+			"eqeqeq",
+			"firebaserc",
+			"giphy",
+			"kohler",
+			"linebreak",
+			"pmmmwh",
+			"precache",
+			"precaching",
+			"serviceworker",
+			"webfonts",
+			"webp",
+			"wojtekmaj"
+		],
+		"editor.formatOnSaveMode": "modifications",
+		"diffEditor.codeLens": true,
+		"editor.minimap.enabled": false
+	},
+	"extensions": {
+		"recommendations": [
+			"anseki.vscode-color",
+			"christian-kohler.npm-intellisense",
+			"dbaeumer.vscode-eslint",
+			"ecmel.vscode-html-css",
+			"streetsidesoftware.code-spell-checker"
+		]
+	}
+}

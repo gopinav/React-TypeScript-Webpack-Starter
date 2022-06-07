@@ -2,12 +2,16 @@
   "name": "react-typescript-webpack-starter",
   "version": "1.0.0",
   "description": "A starter template for React with Typescript using Webpack 5",
+  "theme-color": "#000000",
+  "background-color": "#ffffff",
   "scripts": {
     "start": "webpack serve --config webpack/webpack.config.js --env env=dev",
     "build": "webpack --config webpack/webpack.config.js --env env=prod",
-    "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
-    "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "yarn lint:web && yarn lint:functions",
+    "lint:web": "eslint --fix \"web/**/*.{js,jsx,ts,tsx,json}\"",
+    "lint:functions": "eslint --fix \"functions/src/**/*.{js,ts,json}\"",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "keywords": [
     "React",
@@ -19,8 +23,19 @@
   "author": "Vishwas",
   "license": "MIT",
   "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.58",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "workbox-background-sync": "^6.1.5",
+    "workbox-cacheable-response": "^6.1.5",
+    "workbox-core": "^6.1.5",
+    "workbox-expiration": "^6.1.5",
+    "workbox-precaching": "^6.1.5",
+    "workbox-routing": "^6.1.5",
+    "workbox-strategies": "^6.1.5",
+    "workbox-window": "^6.1.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -30,44 +45,72 @@
     "@babel/preset-typescript": "^7.12.16",
     "@babel/runtime": "^7.13.10",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
+    "@types/enzyme": "^3.10.8",
+    "@types/jest": "^26.0.23",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.15.0",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.2",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^9.0.0",
     "css-loader": "^5.0.2",
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.2",
     "eslint": "^7.19.0",
-    "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "html-webpack-plugin": "^5.1.0",
     "husky": "4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.0.4",
     "lint-staged": "^10.5.4",
-    "prettier": "^2.2.1",
     "react-refresh": "^0.9.0",
+    "responsive-loader": "^2.3.0",
+    "sharp": "^0.28.3",
     "style-loader": "^2.0.0",
     "typescript": "^4.1.5",
     "webpack": "^5.21.2",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2",
-    "webpack-merge": "^5.7.3"
+    "webpack-merge": "^5.7.3",
+    "webpack-pwa-manifest": "^4.3.0",
+    "workbox-webpack-plugin": "^6.1.5"
+  },
+  "jest": {
+    "testMatch": [
+      "<rootDir>/__tests__/**/*.[jt]s?(x)"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "identity-obj-proxy",
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "<rootDir>/setupTests.js"
+    ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn lint"
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json}": [
-      "eslint --fix"
+    "web/**/*.{js,jsx,ts,tsx}": [
+      "jest --findRelatedTests"
     ],
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write"
+    "functions/src/**/*.{js,ts}": [
+      "jest --findRelatedTests"
     ]
   }
 }
